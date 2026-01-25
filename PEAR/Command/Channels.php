@@ -558,8 +558,9 @@ configuration.',
                         $c->getName() . '" (' . $contents->getMessage() . ')');
                 }
             }
-
-            list($contents, $lastmodified) = $contents;
+            if (is_array($contents)) {
+                list($contents, $lastmodified) = $contents;
+	    }
             if (!$contents) {
                 $this->ui->outputData("Channel \"$params[0]\" is up to date");
                 return;
