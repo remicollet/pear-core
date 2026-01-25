@@ -44,6 +44,16 @@
             "email": "mj@php.net",
             "name": "Martin Jansen",
             "role": "Helper"
+        },
+        {
+            "email": "cweiske@php.net",
+            "name": "Christian Weiske",
+            "role": "Helper"
+        },
+        {
+            "email": "ashnazg@php.net",
+            "name": "Chuck Burgess",
+            "role": "Lead"
         }
     ],
     "autoload": {
