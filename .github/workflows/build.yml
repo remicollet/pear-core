@@ -47,7 +47,11 @@ jobs:
       - name: Run tests
         run: |
           umask 0022
+          pear package-validate ./package2.xml
           pear package ./package2.xml
-          ls -lah PEAR-*.tgz
+          ls -lah ./PEAR-*.tgz
+          pear package-validate ./PEAR-*.tgz
           sudo pear upgrade --force ./PEAR-*.tgz
+          pear list
+          pear run-tests --ini=" -d include_path=.:/usr/share/php" -q -d -r ./tests
           sudo pear run-tests --ini=" -d include_path=.:/usr/share/php" -q -d -r ./tests
