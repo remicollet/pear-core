@@ -64,7 +64,6 @@ class PEAR_RunTest
         'display_errors=1',
         'log_errors=0',
         'html_errors=0',
-        'report_memleaks=0',
         'report_zend_debug=0',
         'docref_root=',
         'docref_ext=.html',
@@ -93,6 +92,9 @@ class PEAR_RunTest
             $excluded_error_reporting |= E_STRICT;
         }
         $this->ini_overwrites[] = 'error_reporting=' . (E_ALL & ~$excluded_error_reporting);
+        if (!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 80500) {
+            $this->ini_overwrites[] = 'report_memleaks=0';
+        }
         if (is_null($logger)) {
             require_once 'PEAR/Common.php';
             $logger = new PEAR_Common;
